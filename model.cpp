@@ -119,6 +119,7 @@ void model::freeSnake(struct SnakeHead *head)                       //释放蛇�
         free(current);
         current = next;
     }
+    free(head);
     head = NULL;
     
 }
