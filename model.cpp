@@ -1,7 +1,6 @@
 #include "model.h"
 #include "terminalControl.h"
 
-using namespace std::chrono_literals;
 int colour[7] = {9,208,11,10,14,12,13};                                         //颜色数组，对应为红 橙 黄 绿 青 蓝 紫
 
 char model::dir = 'd';                                                          //蛇移动方向，由键盘按键传值
@@ -105,7 +104,13 @@ void model::printSnake(struct SnakeHead *head)                      //打印蛇
         current = current->next;
     }
     std::cout << std::flush;
-    std::this_thread::sleep_for(200ms);
+    int i = head->size / 5;
+    int j = 150 - 5*i;
+    if (j <= 50)
+    {
+        j = 50;
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(j));
     tc::cleanScreen();
 }
 
